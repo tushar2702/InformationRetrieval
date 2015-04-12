@@ -3,6 +3,7 @@ Created on 06-Oct-2013
 
 @author: tushar
 '''
+
 import math;
 import sys;
 
@@ -19,7 +20,6 @@ def main(filename):
     computePageRank();
     print("Done. Please see the output file 'perplexity.txt' for perplexity values...")
     
-
 def readGraph(filename):
     print("Execution in progress. Please Wait...");
     graphFile = open(filename);
@@ -78,10 +78,10 @@ def computePageRank():
     perplexityFile.close();   
         
 def isNotConverged(perplexity):
-    if (perplexityList.__len__() > 4):
-        perplexityList.__delitem__(0);
+    if (len(perplexityList) > 4):
+        del perplexityList[0];
     perplexityList.append(int(perplexity));
-    if (perplexityList.__len__() < 4):
+    if (len(perplexityList) < 4):
         return True;
     else:
         val1 = str(perplexityList[0]).__getitem__(len(str(perplexityList[0]))-1);
@@ -91,9 +91,8 @@ def isNotConverged(perplexity):
         
         if (val1 == val2 and val1 == val3 and val1 == val4):
             return False;
-        perplexityList.__delitem__(0);
+        del perplexityList[0];
         return True; 
-        
 
 if __name__ == '__main__':
     main(sys.argv[1])
